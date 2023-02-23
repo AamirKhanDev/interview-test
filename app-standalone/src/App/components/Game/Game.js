@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import Board from "../Board";
+import React, { useEffect, useState } from "react";
+import Board from "../Board/Board";
+import GameResults from "../GameResults/GameResults";
+import "./Game.css";
 
 /**
  * A game of tic-tac-toe.
@@ -8,7 +10,10 @@ const Game = () => {
     const [gameHistory, setGameHistory] = useState([{ squares: Array(9).fill(null) }]); // Start of game
     const [stepNumber, setStepNumber] = useState(0);
     const [xIsNext, setXisNext] = useState(true);
-
+    const [wins, setWins] = useState([]); // track our wins
+    let winningSquares = []; //records the squares the game is won on
+    
+    
     const calculateWinner = (squares) => {
         const lines = [
             [0, 1, 2],
@@ -20,11 +25,14 @@ const Game = () => {
             [0, 4, 8],
             [2, 4, 6]
         ];
-
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                return squares[a];
+                winningSquares = [a, b, c]
+                if (squares[a] === 'O') {
+                    return 'Y'
+                } 
+                return 'X';
             }
         }
 
@@ -44,6 +52,7 @@ const Game = () => {
 
         setGameHistory([...history, { squares }]);
         setStepNumber(history.length);
+
         setXisNext(!xIsNext);
     };
 
@@ -51,6 +60,12 @@ const Game = () => {
         setStepNumber(step);
         setXisNext(step % 2 === 0);
     };
+
+    const playAgain = () => {
+        setGameHistory([{ squares: Array(9).fill(null) }]);
+        setStepNumber(0);
+        setXisNext(true);
+      }
 
     const current = gameHistory[stepNumber];
     const winner = calculateWinner(current.squares);
@@ -66,25 +81,41 @@ const Game = () => {
         );
     });
 
+
     let status;
     if (winner) {
         status = "Winner: " + winner;
     } else {
-        status = "Next player: " + (xIsNext ? "X" : "O");
+        status = "Next player: " + (xIsNext ? "X" : "Y");
     }
+
+    useEffect(() => { // increases x or y win count for scoreboard
+        if(winner === 'Y') setWins((prev) => [...prev, 'Y'])
+         if(winner === 'X') setWins((prev) => [...prev, 'X'])
+    }, [winner])
 
     return (
         <div className="game">
             <div className="game-board">
+                
                 <Board
                     squares={current.squares}
                     onClick={i => handleClick(i)}
+                    winningSquares={winningSquares}
                 />
+                <div>
+                {/* Adding in the 'play again' button */}
+                <button className="play-again" onClick={playAgain}>Play Again</button>
+              </div>
             </div>
+
             <div className="game-info">
                 <div>{status}</div>
                 <ol>{moves}</ol>
+                
             </div>
+            
+             <GameResults wins={wins} />
         </div>
     );
 };

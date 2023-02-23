@@ -1,17 +1,25 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import Square from '../Square';
+import Square from '../Square/Square';
 
 /**
  * A board for the game of tic-tac-toe.  A 3x3 square.
  */
-const Board = ({onClick, squares}) => {
-    const renderSquare = (i) => (
-        <Square
+const Board = ({ onClick, squares, winningSquares }) => {
+  const renderSquare = (i) => (
+    <> 
+       {winningSquares.includes(i) ? <Square
             value={squares[i]}
             onClick={() => onClick(i)}
-        />
+            color="gold"
+      /> :
+      <Square
+            value={squares[i]}
+            onClick={() => onClick(i)}
+            color="cyan"
+      />} 
+    </>
     );
 
     return (
@@ -44,7 +52,12 @@ Board.propTypes = {
     /**
      *  The handler for when a square is clicked
      */
-    onClick: PropTypes.func
+  onClick: PropTypes.func,
+    /**
+     *  The squares that won the game
+     */
+  winningSquares: PropTypes.array.isRequired,
+
 };
 
 export default Board;

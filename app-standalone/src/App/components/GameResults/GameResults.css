@@ -1,0 +1,12 @@
+.gameScore {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin-left: 3rem;
+}
+
+.gameHistory {
+  display: flex;
+  flex-direction: column;
+}
+
