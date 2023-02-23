@@ -5,7 +5,7 @@ import './GameResults.css';
 const GameResults = ({ wins }) => { 
 
   const justEndIt = () => {
-    if (wins.length === 9) {
+    if (wins.length === 5) {
     alert("I think you've played enough.  Let's call it a day.")
     }
     }
