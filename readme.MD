@@ -63,7 +63,7 @@ Disadvantages:
 * You can 'over engineer' an application by creating too many components when not needed. This can cause unnecessary clutter in the file structure as well as take up time better spent elsewhere.
 
 
-2. **Thinking about a production ready app, what do you think is missing from all the examples? *Hint: the square component in the standalone app has one**
+2. **Thinking about a production ready app, what do you think is missing from all the examples?** *Hint: the square component in the standalone app has one*
 
 * Test cases are missing. Without proper test cases, the app could have a significant number of bugs which would be detrimental to the user experience. Even a simple test such as testing if a components loads without crashing the application is useful. Additionally testing allows a code base to scale as it allows developers to make changes to the code base without worrying about breaking the app, especially if a TDD (test driven development) approach is taken.
 
@@ -78,7 +78,7 @@ A good case for using Redux is when you have an application with a large and com
 4. **If you are interested in the full-stack role* Please take a look at the partial implementation of an express routes in backend/router.js.**
     *Thinking of a production application, what issues do you see with this code? *List as many as you like* 
 
-   * The code should be split into different files. The router, main app, controllers, models, and DB connection should ideally have their own standalone files and be imported when necessary. This will make the code more readable and easier to navigate as well as prevent the main app file from becoming too cluttered. This is also adhearing to DRY principles.
+   * The code should be split into different files. The router, main app, controllers, models, and DB connection should ideally have their own standalone files and be imported when necessary. This will make the code more readable and easier to navigate as well as prevent the main app file from becoming too cluttered. This is also adhering to DRY principles.
 
    * No error handling for the MongoDB client connection or for document not found case. We don't want the server to hang or crash if there are no failsafes in place so having a try catch block to handle errors is important.
    
@@ -89,8 +89,18 @@ With either the app-standalone or app-redux (**not both** - whichever you are co
 I used the **app-standalone** for these challenges.
 
 1. Update the app so that is highlights the winning move.
+
+![image](https://user-images.githubusercontent.com/63204104/220970316-3200510c-edd0-48e3-a814-d65595bbd959.png)
+
 2. Update the app so that it allows for a named player X and Y, and it keeps a league table of who won each game.
+
+![image](https://user-images.githubusercontent.com/63204104/220970461-917bba59-a687-4ad9-abcb-44d391e01756.png)
+
+
 3. If you get time, implement something that you think that the app could do and is cool. What other things would you change.
+
+![image](https://user-images.githubusercontent.com/63204104/220970133-e2fa8930-1eb0-47a1-8906-67f6e46a37ee.png)
+
 
 ### Expectations
  * We don't want you to spend too long on this exercise, just the necessary amount of time to show your front-end and back-end skills. We expect it to take 1.5 hours if you have React experience, longer if you have no React experience. 
