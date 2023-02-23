@@ -1,3 +1,12 @@
+## Instructions
+
+1. Clone the repo onto your machine.
+2. Navigate into the folder `app-standalone` in your terminal (You can do this via `cd app-standalone`).
+3. Execute `npm install` to install dependencies.
+4. Execute `npm start` to run the application.
+5. Execute `npm test` to run the test files.
+
+
 ## Limio
 
 Welcome to the Limio coding interview.
