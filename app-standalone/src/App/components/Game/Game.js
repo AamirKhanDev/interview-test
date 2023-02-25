@@ -35,6 +35,10 @@ const Game = () => {
                 return 'X';
             }
         }
+/* It then checks whether the value of squares at index a is truthy (i.e., not null, undefined, or false) and whether it 
+is equal to the value of squares at indices b and c. If this condition is true, it sets the winningSquares 
+variable to an array containing the indices a, b, and c. */
+
 
         return null;
     };
@@ -90,7 +94,10 @@ const Game = () => {
     }
 
     useEffect(() => { // increases x or y win count for scoreboard
-        if(winner === 'Y') setWins((prev) => [...prev, 'Y'])
+        if(winner === 'Y') setWins((prev) => [...prev, 'Y']) /*the effect hook listens for changes to the winner variable. If the winner variable is equal to 'Y', 
+        it updates the wins array by appending the string 'Y' to the end of the array. This is done using the setWins() function, which is a state update function for the 
+        wins state variable. The setWins() function takes a function that receives the previous state value and returns the new state value, which is an array containing 
+        all the previous values from the wins state array plus the new value 'Y'. This is done using the spread operator ... to copy the previous state array. */
          if(winner === 'X') setWins((prev) => [...prev, 'X'])
     }, [winner])
 
